@@ -1,0 +1,57 @@
+@import url(../styles/global.css);
+/* Está importando o reset.css para aplicar aqui */
+
+main {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    /* Para colocar a imagem da planta na lateral, é necessário o display flex primeiro */
+}
+
+section {
+    width: 49.2%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+
+    border: 1px solid green;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 500;
+    font-style: normal;
+    
+}
+
+.form-container > p {
+    /* usei o ">" para dizer que o p pentence form-container */
+    font-size: 16px;
+    margin-top: 22px;
+    /* O margin empurra */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* gap espaça igualmente os objetos */
+    margin-top: 60px;
+    border: 1px solid red;
+}
+
+.fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+img {
+    width: 50.8%;
+}
