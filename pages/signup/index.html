@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <div class="form-container">
+                <h1>Get Started Now</h1>
+                <form action="" method="post" id="loginForm"> <!-- id="loginForm" agora corresponde ao JavaScript -->
+                    <fieldset>
+                        <label for="name">Name</label>
+                        <input placeholder="Enter your name" type="name" name="name" id="name">
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">Email address</label>
+                        <input placeholder="Enter your email" type="email" name="email" id="email">
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="title-wrapper">
+                            <label for="password">Password</label>
+                        </div>
+                        <input placeholder="Enter yor password" type="password" name="password" id="password">
+                    </fieldset>
+
+                    <fieldset class="checkbox">
+                        <input type="checkbox" name="terms" id="terms">
+                        <label for="terms">
+                            I agree to the <a href="#" class="terms-link">terms & policy</a>
+                        </label>
+
+                    </fieldset>
+
+                    <button type="submit">Signup</button>
+                </form>
+                <div class="divider">
+                    <div class="line"></div>
+                    <p>Or</p>
+                    <div class="line"></div>
+                </div>
+                <div class="sso-container">
+                    <button>
+                        <img src="../assets/icons/google-logo.svg" alt="logo google">
+                        <p>Sign in with Google</p>
+                    </button>
+                    <button>
+                        <img src="../assets/icons/apple-logo.svg" alt="logo apple">
+                        <p>Sign in with Apple</p>
+                    </button>
+                </div>
+                <p class="redirect-sign-in">Have an account?  <a>Sign In</a></p>
+            </div>
+        </section>
+        <img src="../assets/images/costela-de-adao.png" alt="foto de uma planta costela de adão">
+    </main>
+
+    <script>
+        const form = document.getElementById("loginForm");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault(); // Impede recarregamento da página
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const user = { email, password };
+
+            try {
+                const response = await fetch("http://localhost:8080/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(user)
+                });
+
+                const data = await response.text(); // Assume que a API retorna texto
+                alert(data); // Exibe mensagem de sucesso ou erro
+
+            } catch (error) {
+                console.error("Erro:", error);
+                alert("Erro ao conectar ao servidor.");
+            }
+        });
+    </script>
+</body>
+</html>
